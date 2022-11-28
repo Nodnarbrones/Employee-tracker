@@ -138,3 +138,36 @@ var connection = mysql.createConnection({
       })
     } )
   }
+// needs to query role table in order to get role id foreign key
+  function addEmployee() {
+    connection.query('select * FROM role', function (err, res) {
+      inquirer.prompt([
+        {
+          type: 'input',
+          name: 'firstName',
+          message: 'What is the first name of the new Employee?'
+        },
+        {
+          type: 'input',
+          name: 'lastName',
+          message: 'What is the last name of the new Employee?'
+        },
+        {
+          type: 'list',
+          name: 'roleId',
+          message: 'What is the role id?',
+          choices: res.map(role => role.id)
+        },
+        // manager id question here
+      ]) .then(data => {
+        connection.query('insert INTO employee set ?',{
+          first_name: data.firstName,
+          last_name: data.lastName,
+          role_id: data.roleId
+          //answer from manager id question placed into manager_id column here
+        })
+        console.log('employee added')
+        promptUser()
+      })
+    } )
+  }

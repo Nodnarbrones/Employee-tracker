@@ -171,3 +171,34 @@ var connection = mysql.createConnection({
       })
     } )
   }
+
+//query employee table and prompt to select which employee to update THEN
+//query role table and prompt to get existing list of role id's THEN
+// connection.query update employee table where employee id or name to role id selected from role table query
+  // function updateRole() {
+  //   connection.query('select * FROM employee', (err, res) => {
+  //     inquirer.prompt([
+  //       //ask question to identify employee here
+  //       {
+  //         type: 'list',
+  //         name: 'firstName',
+  //         message: 'Which employee whould you like to edit?',
+  //         choices: res.map(employee => employee.firstName)
+  //       }
+  //     ]) .then (data => {
+  //       connection.query('select * FROM role', (err, res) => {
+  //         inquirer.prompt([
+  //           //ask question to identify role id here
+  //           {
+  //             type: 'list',
+  //             name: 'roleId',
+  //             message: 'What role would you like to give them?',
+  //             choices: res.map(role => role.id)
+  //         //   }
+  //         // ]) .then (data => {
+  //         //   connection.query('update employee WHERE first_name = ? set role_ id = ?', [question 1 answer here, questin 2 answer here])
+  //         // })
+  //       })
+  //     })
+  //   })
+  // }
